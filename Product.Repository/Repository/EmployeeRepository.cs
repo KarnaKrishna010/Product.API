@@ -39,5 +39,30 @@ namespace Product.Repository.Repository
             return employeeDTOListResponse;
         }
 
+        public EmployeeDTOResponse DeletedList(string username) 
+        {
+            EmployeeDTOResponse employeeDTOListResponse = new EmployeeDTOResponse();
+            using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))
+            {
+                var result = cnn.QueryMultiple("Employee_DeletedList_Admin", new {UserName = username}, null, null, CommandType.StoredProcedure);
+                if(!result.IsConsumed)
+                {
+                    employeeDTOListResponse.DataUpdateResponse = result.Read<DataUpdateResponseDTO>().FirstOrDefault();
+                }
+
+                if(employeeDTOListResponse.DataUpdateResponse.Status)
+                {
+                    if (!result.IsConsumed)
+                    {
+                        employeeDTOListResponse.EmployeeDTOList = result.Read<EmployeeDTOList>().ToList();
+                    }
+                }
+
+            }
+
+            return employeeDTOListResponse;
+        }
+
+
     }
 }

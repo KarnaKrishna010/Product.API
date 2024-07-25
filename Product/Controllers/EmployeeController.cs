@@ -30,5 +30,18 @@ namespace Product.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
+        public IActionResult DeletedList()
+        {
+            string userName = "KSAdmin";
+            string iPAddress = "::1";
+            logger.LogInformation($"|Request:User:{userName},IP:{iPAddress}");
+            var result = employee.DeletedList(userName);
+            logger.LogInformation($"Result: {result}");
+            return Ok(result);
+        }
+
     }
 }
