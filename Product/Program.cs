@@ -1,4 +1,7 @@
+using Product.API.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowedSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("cnn");
@@ -10,6 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//For Cors Policy
+builder.Services.ConfigureCors(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.UseCors(MyAllowedSpecificOrigins);
 
 app.MapControllers();
 

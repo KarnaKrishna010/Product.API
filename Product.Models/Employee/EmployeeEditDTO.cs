@@ -14,6 +14,12 @@ namespace Product.Models.Employee
         public string? Mobile {  get; set; }
         public string? Email { get; set; }
 
+        public string? DateOfJoining { get; set; }
+
+        public string? DateOfBirth { get; set; }
+
+        public int Salary { get; set; }
+
         public string? ModifiedBy { get; set; }
 
         public string? ModifiedByIpAddress { get; set; }

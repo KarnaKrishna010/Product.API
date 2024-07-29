@@ -13,7 +13,7 @@ namespace Product.API.Extensions
                 options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins(corsPolicySettings.Origins.Select(origin => origin.Url).ToArray()).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                     });
             });
         }
