@@ -70,7 +70,7 @@ namespace Product.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
         public IActionResult Update(EmployeeEditDTO employeeEditDTO)
@@ -83,7 +83,7 @@ namespace Product.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{employeeId}")]
+        [HttpPost("{employeeId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
         public IActionResult Delete(int employeeId)
