@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Product.Models.Employee
 {
-    public class EmployeeEditDTO
+    public class EmployeeDTOEdit
     {
         public int EmployeeId { get; set; }
         public string? EmployeeName { get; set; }

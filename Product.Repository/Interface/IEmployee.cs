@@ -6,13 +6,13 @@ namespace Product.Repository.Interface
     {
         EmployeeDTOResponse List(string username);
 
-        EmployeeDTOResponse DeletedList(string username);
+        EmployeeDeletedDTOResponse DeletedList(string username);
 
-        EmployeeDTOResponse GetByCode(int employeeId, string username);
+        EmployeeDetailDTOResponse GetByCode(int employeeId, string username);
 
-        EmployeeDTOResponse Insert(EmployeeAddDTO employeeAddDTO);
+        EmployeeDTOResponse Insert(EmployeeDTOAdd employeeAddDTO);
 
-        EmployeeDTOResponse Update(EmployeeEditDTO employeeEditDTO);
+        EmployeeDTOResponse Update(EmployeeDTOEdit employeeEditDTO);
 
         EmployeeDTOResponse Delete(int employeeId, string deletedBy, string deletedByIpAddress);
     }

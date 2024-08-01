@@ -40,9 +40,9 @@ namespace Product.Repository.Repository
             return response;
         }
 
-        public EmployeeDTOResponse DeletedList(string username)
+        public EmployeeDeletedDTOResponse DeletedList(string username)
         {
-            EmployeeDTOResponse response = new EmployeeDTOResponse();
+            EmployeeDeletedDTOResponse response = new EmployeeDeletedDTOResponse();
             using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))
             {
                 var result = cnn.QueryMultiple("Employee_DeletedList_Admin", new { UserName = username }, null, null, CommandType.StoredProcedure);
@@ -55,7 +55,7 @@ namespace Product.Repository.Repository
                 {
                     if (!result.IsConsumed)
                     {
-                        response.EmployeeDTOList = result.Read<EmployeeDTOList>().ToList();
+                        response.EmployeeDTODeletedList = result.Read<EmployeeDTODeletedList>().ToList();
                     }
                 }
 
@@ -64,9 +64,9 @@ namespace Product.Repository.Repository
             return response;
         }
 
-        public EmployeeDTOResponse GetByCode(int employeeId, string username)
+        public EmployeeDetailDTOResponse GetByCode(int employeeId, string username)
         {
-            EmployeeDTOResponse response = new EmployeeDTOResponse();
+            EmployeeDetailDTOResponse response = new EmployeeDetailDTOResponse();
             using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))
             {
                 var result = cnn.QueryMultiple("Employee_GetByCode_Admin", new { EmployeeID = employeeId, UserName = username, Mode = 0 }, null, null, CommandType.StoredProcedure);
@@ -79,7 +79,7 @@ namespace Product.Repository.Repository
                 {
                     if (!result.IsConsumed)
                     {
-                        response.EmployeeDTOList = result.Read<EmployeeDTOList>().ToList();
+                        response.EmployeeDetailDTOList = result.Read<EmployeeDetailDTOList>().ToList();
                     }
                 }
             }
@@ -98,7 +98,7 @@ namespace Product.Repository.Repository
         }
 
 
-        public EmployeeDTOResponse Insert(EmployeeAddDTO employeeAddDTO)
+        public EmployeeDTOResponse Insert(EmployeeDTOAdd employeeAddDTO)
         {
             EmployeeDTOResponse response = new EmployeeDTOResponse();
             using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))
@@ -116,7 +116,7 @@ namespace Product.Repository.Repository
             return response;
         }
 
-        public EmployeeDTOResponse Update(EmployeeEditDTO employeeEditDTO)
+        public EmployeeDTOResponse Update(EmployeeDTOEdit employeeEditDTO)
         {
             EmployeeDTOResponse response = new EmployeeDTOResponse();
             using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))

@@ -1,13 +1,18 @@
 ﻿using Newtonsoft.Json;
 using Product.Models.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Product.Models.Employee
 {
-    public class EmployeeDTOResponse
+    public class EmployeeDetailDTOResponse
     {
         public DataUpdateResponseDTO DataUpdateResponse { get; set; }
 
-        public List<EmployeeDTOList> EmployeeDTOList { get; set; }
+        public List<EmployeeDetailDTOList> EmployeeDetailDTOList { get; set; }
 
         public override string ToString()
         {
@@ -20,33 +25,35 @@ namespace Product.Models.Employee
             {
                 return status;
             }
-            status += $"EmployeeDTOList count: {this.EmployeeDTOList.Count}";
+            status += $"EmployeeDetailDTOList count: {this.EmployeeDetailDTOList.Count}";
             return status;
         }
-
     }
 
-
-
-    public class EmployeeDTOList
+    public class EmployeeDetailDTOList
     {
         public int EmployeeId { get; set; }
         public string? EmployeeName { get; set; }
         public string? Mobile { get; set; }
         public string? Email { get; set; }
-
         public DateTime? DateOfJoining { get; set; }
-
         public DateTime? DateOfBirth { get; set; }
-
-        public int Salary { get; set; }
+        public string? Salary { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public string? CreatedBy { get; set; }
+        public string? CreatedByIpAddress { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+        public string? ModifiedBy { get; set; }
+        public string? ModifiedByIpAddress { get; set; }
+        public DateTime? DeletedOn { get; set; }
+        public string? DeletedBy { get; set; }
+        public string? DeletedByIpAddress { get; set; }
 
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
         }
     }
-
 
 
 }

@@ -52,7 +52,7 @@ namespace Product.API.Controllers
             string userName = "KSAdmin";
             string iPAddress = "::1";
             logger.LogInformation($"|Request:User:{userName},IP:{iPAddress}");
-            var result = employee.GetByCode(employeeId, userName);
+            var result = employee.GetByCode(employeeId,userName);
             logger.LogInformation($"Result:{result}");
             return Ok(result);
         }
@@ -60,7 +60,7 @@ namespace Product.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
-        public IActionResult Insert(EmployeeAddDTO employeeAddDTO)
+        public IActionResult Insert(EmployeeDTOAdd employeeAddDTO)
         {
             string createdBy = "KSAdmin";
             string creadtedByIpAddress = "::1";
@@ -73,7 +73,7 @@ namespace Product.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
-        public IActionResult Update(EmployeeEditDTO employeeEditDTO)
+        public IActionResult Update(EmployeeDTOEdit employeeEditDTO)
         {
             string userName = "KSAdmin";
             string iPAddress = "::1";
