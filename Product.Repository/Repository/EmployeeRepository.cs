@@ -67,26 +67,34 @@ namespace Product.Repository.Repository
         public EmployeeDetailDTOResponse GetByCode(int employeeId, string username)
         {
             EmployeeDetailDTOResponse response = new EmployeeDetailDTOResponse();
+
             using (IDbConnection cnn = new SqlConnection(appConnectionString.ConnectionString))
             {
+                // Execute the stored procedure
                 var result = cnn.QueryMultiple("Employee_GetByCode_Admin", new { EmployeeID = employeeId, UserName = username, Mode = 0 }, null, null, CommandType.StoredProcedure);
+
+                // Read and set the DataUpdateResponse
                 if (!result.IsConsumed)
                 {
                     response.DataUpdateResponse = result.Read<DataUpdateResponseDTO>().FirstOrDefault();
                 }
 
+                // Check the status and read the single EmployeeDetailDTO
                 if (response.DataUpdateResponse.Status)
                 {
                     if (!result.IsConsumed)
                     {
-                        response.EmployeeDetailDTOList = result.Read<EmployeeDetailDTOList>().ToList();
+                        var employeeDetailList = result.Read<EmployeeDetailDTO>().ToList();
+
+                        // Assuming the result returns a single employee detail
+                        response.EmployeeDetailDTO = employeeDetailList.FirstOrDefault();
                     }
                 }
             }
 
             return response;
-
         }
+
 
         public EmployeeDTOResponse Delete(int employeeId,string deletedBy,string deletedByIpAddress)
         {

@@ -14,6 +14,7 @@ namespace Product.API.Extensions
                     builder =>
                     {
                         builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+
                     });
             });
         }

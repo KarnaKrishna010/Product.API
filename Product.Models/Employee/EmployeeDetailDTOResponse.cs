@@ -12,7 +12,7 @@ namespace Product.Models.Employee
     {
         public DataUpdateResponseDTO DataUpdateResponse { get; set; }
 
-        public List<EmployeeDetailDTOList> EmployeeDetailDTOList { get; set; }
+        public EmployeeDetailDTO EmployeeDetailDTO { get; set; }
 
         public override string ToString()
         {
@@ -25,12 +25,12 @@ namespace Product.Models.Employee
             {
                 return status;
             }
-            status += $"EmployeeDetailDTOList count: {this.EmployeeDetailDTOList.Count}";
+            status += $"EmployeeDetailDTO count: {this.EmployeeDetailDTO}";
             return status;
         }
     }
 
-    public class EmployeeDetailDTOList
+    public class EmployeeDetailDTO
     {
         public int EmployeeId { get; set; }
         public string? EmployeeName { get; set; }
